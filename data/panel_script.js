@@ -1,4 +1,5 @@
 function newHistoryEntry(params) {
+  $("#history-placeholder").hide();
   var entry = $("#history-entry-template").clone();
   entry.attr("id", "");
   entry.find(".history-thumb a").attr("href", params.originalURI);
