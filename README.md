@@ -11,7 +11,6 @@ Note that most major social networking sites strip EXIF information (including
 GPS locations). This includes Facebook, Twitter and imgur.
 
 ## Usage
-
 GPSDetect uses the [Firefox Add-on SDK][1], which is required to build and
 install it, for now. To build a copy of GPSDetect, see the
 [Add-on SDK installation instructions][2] to activate the SDK's
@@ -30,22 +29,30 @@ Everything else is under the Mozilla Public License v2.0 and copyright
 Allan Wirth 2014.
 
 ## TODO
-The following improvements could be made:
+The following improvements could be made (roughly in order of priority):
 
-- Provide alerts for other privacy compromising exif information, such as
-  timestamp, lens serial number, etc.
+- Testing for robustness, especially against images that are already cached.
+- Provide alerts/detection for other privacy compromising exif information,
+  such as timestamp, lens serial number, etc.
 - Add support for IPTC and/or XMP data. Note that XMP can contain EXIF data,
   so XMP can also contain GPS information. IPTC cannot contain GPS information,
   but could contain other sensitive information.
-- Add an option for auto-loading/sniffing thumbnail links.
+- Links to google maps, bing maps and openstreetmaps in addition to just
+  geohack.
 - Add support for clearing history / possible integration into the history
-  clearing dialog.
+  clearing dialog (Integration is really messy, and involves registering XUL
+  overlays: see [how DownThemAll does it][dta-sanatize]). Probably better to
+  just have a link at the bottom of the frame for 'clear history'.
 - Add support for actually creating real thumbnails of the images, instead of
-  creating data uris with the entire content of the image.
-- Testing, especially against images that are already cached.
+  creating data uris with the entire content of the image (use page-worker
+  addon sdk api along with a canvas to do this easily).
 - Remove jQuery dependency because it's really stupid and is most of the code.
-
+- There is a memory leak from the notifications. Is this my fault or firefox's?
+- An icon that doesn't suck.
+- (Probably not going to ever happen) Add an option for auto-loading/sniffing
+  thumbnail links.
 
 [1]: https://developer.mozilla.org/en-US/Add-ons/SDK
 [2]: https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation
 [exif-js]: https://github.com/jseidelin/exif-js
+[dta-sanatize]: https://github.com/downthemall/downthemall-mirror/blob/c8fd56c464b2af6b8dc7ddee1f9bbe6e9f6e8382/modules/main.js#L513
