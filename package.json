@@ -1,9 +1,9 @@
 {
   "name": "gps-detect",
-  "title": "gps-detect",
+  "title": "GPSDetect",
   "id": "jid1-6FS2YpTAB7qhfg",
-  "description": "a basic add-on",
-  "author": "",
+  "description": "Detects GPS EXIF information in loaded JPEGs automatically",
+  "author": "Allan Wirth",
   "license": "MPL 2.0",
   "version": "0.1",
   "icon": "data/icon-32.png",
