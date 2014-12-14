@@ -10,11 +10,18 @@ to the location on a map.
 Note that most major social networking sites strip EXIF information (including
 GPS locations). This includes Facebook, Twitter and imgur.
 
+## Usage
+
+GPSDetect uses the [Firefox Add-on SDK][1], which is required to build and
+install it, for now. To build a copy of GPSDetect, see the
+[Add-on SDK installation instructions][2] to activate the SDK's
+virtualenv, and then simply run `cfx xpi` in the GPSDetect root directory.
+You will get an unsigned XPI that can be installed into Firefox as usual.
+
 ## License
-The actual exif detection code is from Jacob Seidelin's
-[exif-js](https://github.com/jseidelin/exif-js) project and is licensed under
-the MIT license. The version used here is a stripped down version, but the core
-functionality is the same.
+The actual exif detection code is from Jacob Seidelin's [exif-js] project and
+is licensed under the MIT license. The version used here is a stripped down
+version, but the core functionality is the same.
 
 The plugin currently depends on jQuery because I'm really lazy. jQuery is under
 the MIT license too and copyright the jQuery Foundation, Inc.
@@ -29,7 +36,16 @@ The following improvements could be made:
   timestamp, lens serial number, etc.
 - Add support for IPTC and/or XMP data. Note that XMP can contain EXIF data,
   so XMP can also contain GPS information. IPTC cannot contain GPS information,
-  but could contain other sensative information.
+  but could contain other sensitive information.
 - Add an option for auto-loading/sniffing thumbnail links.
+- Add support for clearing history / possible integration into the history
+  clearing dialog.
+- Add support for actually creating real thumbnails of the images, instead of
+  creating data uris with the entire content of the image.
 - Testing, especially against images that are already cached.
 - Remove jQuery dependency because it's really stupid and is most of the code.
+
+
+[1]: https://developer.mozilla.org/en-US/Add-ons/SDK
+[2]: https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation
+[exif-js]: https://github.com/jseidelin/exif-js
