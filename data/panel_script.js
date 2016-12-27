@@ -1,22 +1,31 @@
 function newHistoryEntry(params) {
-  $("#history-placeholder").hide();
-  var entry = $("#history-entry-template").clone();
-  entry.attr("id", "");
-  entry.find(".history-thumb a").attr("href", params.originalURI);
-  entry.find(".history-thumb img").attr("src", params.thumbURI);
-  entry.find(".history-uri").text(params.originalURI).attr('href', params.originalURI);
-  entry.find(".history-coords").text(params.coords);
+  document.getElementById("history-placeholder").style.display = "none";
+
+  var entry = document.getElementById("history-entry-template").cloneNode(true);
+  entry.setAttribute("id", "");
+  entry.querySelector(".history-thumb a").setAttribute("href", params.originalURI);
+  entry.querySelector(".history-thumb img").setAttribute("src", params.thumbURI);
+  var u = entry.querySelector(".history-uri");
+  u.textContent = params.originalURI;
+  u.setAttribute('href', params.originalURI);
+  entry.querySelector(".history-coords").textContent = params.coords;
   if ("timestamp" in params) {
-	entry.find(".history-timestamp").text(params.timestamp);
+	entry.querySelector(".history-timestamp").textContent = params.timestamp;
   } else {
-	entry.find(".history-timestamp").remove();
+	var e = entry.querySelector(".history-timestamp");
+        e.parentNode.removeChild(e);
   }
+  var links = entry.querySelector(".history-links");
   for (var i = 0; i < params.links.length; i++) {
-    entry.find(".history-links").append($('<a target="_blank"/>').attr("href", params.links[i].href).text(params.links[i].text));
+    var a = document.createElement("a");
+    a.setAttribute("target", "_blank");
+    a.setAttribute("href", params.links[i].href);
+    a.textContent = params.links[i].text;
+    links.appendChild(a);
   }
-  $("#history").prepend(entry);
+  var history = document.getElementById("history");
+  history.insertBefore(entry, history.firstChild);
 }
 
-$(function() {
-  addon.port.on("add-history", newHistoryEntry);
-});
+
+addon.port.on("add-history", newHistoryEntry);

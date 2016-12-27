@@ -22,9 +22,6 @@ The actual exif detection code is from Jacob Seidelin's [exif-js] project and
 is licensed under the MIT license. The version used here is a stripped down
 version, but the core functionality is the same.
 
-The plugin currently depends on jQuery because I'm really lazy. jQuery is under
-the MIT license too and copyright the jQuery Foundation, Inc.
-
 Everything else is under the Mozilla Public License v2.0 and copyright
 Allan Wirth 2014.
 
@@ -46,7 +43,6 @@ The following improvements could be made (roughly in order of priority):
 - Add support for actually creating real thumbnails of the images, instead of
   creating data uris with the entire content of the image (use page-worker
   addon sdk api along with a canvas to do this easily).
-- Remove jQuery dependency because it's really stupid and is most of the code.
 - There is a memory leak from the notifications. Is this my fault or firefox's?
 - An icon that doesn't suck.
 - (Probably not going to ever happen) Add an option for auto-loading/sniffing
