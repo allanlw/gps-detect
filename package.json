@@ -5,7 +5,7 @@
   "description": "Detects GPS EXIF information in loaded JPEGs automatically",
   "author": "Allan Wirth",
   "license": "MPL 2.0",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/main.js",
   "icon": "data/icon-32.png",
   "icon64": "data/icon-64.png"

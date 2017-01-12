@@ -10,6 +10,9 @@ to the location on a map.
 Note that most major social networking sites strip EXIF information (including
 GPS locations). This includes Facebook, Twitter and imgur.
 
+You can install GPS detect from the mozilla addon store: 
+https://addons.mozilla.org/en-US/firefox/addon/gpsdetect/
+
 ## Usage
 GPSDetect uses the [Firefox Add-on SDK][1], which is required to build and
 install it, for now. To build a copy of GPSDetect, see the
