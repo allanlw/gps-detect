@@ -43,10 +43,6 @@ The following improvements could be made (roughly in order of priority):
   clearing dialog (Integration is really messy, and involves registering XUL
   overlays: see [how DownThemAll does it][dta-sanatize]). Probably better to
   just have a link at the bottom of the frame for 'clear history'.
-- Add support for actually creating real thumbnails of the images, instead of
-  creating data uris with the entire content of the image (use page-worker
-  addon sdk api along with a canvas to do this easily).
-- There is a memory leak from the notifications. Is this my fault or firefox's?
 - An icon that doesn't suck.
 - (Probably not going to ever happen) Add an option for auto-loading/sniffing
   thumbnail links.

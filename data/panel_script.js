@@ -1,4 +1,26 @@
-function newHistoryEntry(params) {
+// Takes a data uri for an image, and scales it to fit in size x size
+// cb() is called with the result, or the original uri on failure
+function ThumbnailDataURI(datauri, size, cb) {
+  var img = document.createElement("img");
+  img.onload = function() {
+    var longest_side = Math.max(this.width, this.height);
+
+    var scale = size / longest_side;
+
+    var canvas = document.createElement("canvas");
+    canvas.width = this.width * scale;
+    canvas.height = this.height * scale;
+    canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    cb(canvas.toDataURL("image/jpeg"));
+  }
+  img.onerror = function() {
+    cb(datauri);
+  }
+  img.src = datauri;
+}
+
+function newHistoryEntryReal(params) {
   document.getElementById("history-placeholder").style.display = "none";
 
   var entry = document.getElementById("history-entry-template").cloneNode(true);
@@ -27,5 +49,12 @@ function newHistoryEntry(params) {
   history.insertBefore(entry, history.firstChild);
 }
 
+function newHistoryEntry(params) {
+  ThumbnailDataURI(params.thumbURI, 128, function(newThumb) {
+    params.thumbURI = newThumb;
+    addon.port.emit("thumbnail-result", params);
+    newHistoryEntryReal(params);
+  });
+}
 
 addon.port.on("add-history", newHistoryEntry);
