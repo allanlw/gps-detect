@@ -1,6 +1,6 @@
 {
 	"manifest_version": 2,
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"name": "gps-detect",
 	"author": "Allan Wirth",
  	"description": "Detects GPS EXIF information in loaded JPEGs automatically",
@@ -9,7 +9,7 @@
 	},
 	"browser_action": {
 		"browser_style": false,
-		"default_icon": "icon-source.svg",
+		"default_icon": "icon-64.png",
 		"default_title": "GPSDetect",
 		"default_popup": "panel.html"
 	},
