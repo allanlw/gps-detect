@@ -71,6 +71,3 @@ function base64ArrayBuffer(arrayBuffer) {
 function dataURIFromArrayBuf(mtype, buf) {
 	return "data:"+mtype+";base64,"+base64ArrayBuffer(buf);
 }
-
-exports.str2ArrayBuf = str2ArrayBuf;
-exports.dataURIFromArrayBuf = dataURIFromArrayBuf;

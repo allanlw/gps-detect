@@ -284,5 +284,3 @@ function findEXIFinJPEG(file) {
 
 	return null;
 }
-
-exports.findEXIFinJPEG = findEXIFinJPEG;
