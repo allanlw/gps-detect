@@ -1,6 +1,6 @@
 {
 	"manifest_version": 2,
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"name": "gps-detect",
 	"author": "Allan Wirth",
  	"description": "Detects GPS EXIF information in loaded JPEGs automatically",
@@ -19,5 +19,10 @@
 		"notifications",
 		"http://*/*",
 		"https://*/*"
-	]
+	],
+	"applications": {
+		"gecko": {
+			"strict_min_version": "57.0"
+		}
+	}
 }
