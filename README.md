@@ -14,11 +14,9 @@ You can install GPS detect from the mozilla addon store:
 https://addons.mozilla.org/en-US/firefox/addon/gpsdetect/
 
 ## Usage
-GPSDetect uses the [Firefox Add-on SDK][1], which is required to build and
-install it, for now. To build a copy of GPSDetect, see the
-[Add-on SDK installation instructions][2] to activate the SDK's
-virtualenv, and then simply run `cfx xpi` in the GPSDetect root directory.
-You will get an unsigned XPI that can be installed into Firefox as usual.
+
+GPSDetect is now a Firefox WebExtension (the last native addon version is 
+available in the 0.1.3b tag). The easiest way to test it is via [`web-ext`][1].
 
 ## License
 The actual exif detection code is from Jacob Seidelin's [exif-js] project and
@@ -40,14 +38,11 @@ The following improvements could be made (roughly in order of priority):
 - Links to google maps, bing maps and openstreetmaps in addition to just
   geohack.
 - Add support for clearing history / possible integration into the history
-  clearing dialog (Integration is really messy, and involves registering XUL
-  overlays: see [how DownThemAll does it][dta-sanatize]). Probably better to
-  just have a link at the bottom of the frame for 'clear history'.
+  clearing dialog.
+- support for separation of private browsing mode.
 - An icon that doesn't suck.
 - (Probably not going to ever happen) Add an option for auto-loading/sniffing
   thumbnail links.
 
-[1]: https://developer.mozilla.org/en-US/Add-ons/SDK
-[2]: https://developer.mozilla.org/en-US/Add-ons/SDK/Tutorials/Installation
+[1]: https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Getting_started_with_web-ext
 [exif-js]: https://github.com/jseidelin/exif-js
-[dta-sanatize]: https://github.com/downthemall/downthemall-mirror/blob/c8fd56c464b2af6b8dc7ddee1f9bbe6e9f6e8382/modules/main.js#L513
