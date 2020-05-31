@@ -66,16 +66,24 @@ function listener(details) {
 	console.log("Listen" + details.requestId);
 	var filter = browser.webRequest.filterResponseData(details.requestId);
 
-	var data = new Uint8Array(0);
+	var initial_length = 0;
+	try {
+		var cl = details.responseHeaders.find(x => x.name.toLowerCase() == "content-length");
+		initial_length = parseInt(cl.value);
+	} catch (e) { }
+
+	var data = new Uint8Array(initial_length);
+	var written = 0;
 
 	// Takes an ArrayBuffer and appends it to data
-	// TODO: be more efficient
 	var addData = function(d) {
-		var di = new Uint8Array(d);
-		var t = new Uint8Array(di.length + data.length);
-		t.set(data, 0);
-		t.set(di, data.length);
-		data = t;
+		if (data.length < written + d.byteLength) {
+			var t = new Uint8Array(Math.max(written + d.byteLength, data.length * 2));
+			t.set(data, 0);
+			data = t;
+		}
+		data.set(new Uint8Array(d), written);
+		written += d.byteLength;
 	}
 
 	filter.ondata = function(event) {
