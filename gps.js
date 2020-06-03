@@ -177,6 +177,9 @@ function readTags(file, tiffStart, dirStart, strings, bigEnd) {
 function getStringFromDB(buffer, start, length) {
 	var outstr = "", n;
 	for (n = start; n < start+length; n++) {
+		// Terminate at null terminator. See exiftool:
+		// https://github.com/exiftool/exiftool/blob/2f235f9a5618336f199c6481b452836c55de6b0c/lib/Image/ExifTool.pm#L5226
+		if (buffer.getUint8(n) === 0) break;
 		outstr += String.fromCharCode(buffer.getUint8(n));
 	}
 	return outstr;
